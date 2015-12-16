@@ -1,0 +1,37 @@
+@import './Global.css.scss';
+
+/* Base Application Styles */
+body {
+  color: #000;
+  background: #eee;
+  padding-top: 50px;
+}
+
+.index img {
+  margin: 40px auto;
+  border-radius: 4px;
+  background: #fff;
+  display: block;
+}
+
+.index .notice {
+  margin: 20px auto;
+  padding: 15px 0;
+  text-align: center;
+  border: 1px solid #000;
+  border-width: 1px 0;
+  background: #666;
+}
+
+
+svg.chessboard {
+  border: 1px solid #555;
+  cursor: -webkit-grab;
+}
+
+text.kaiti, g.kaiti{
+  @include user-cant-select();
+  @extend .kaiti;
+  color: #dd4444;
+  font-size: 30px;
+}

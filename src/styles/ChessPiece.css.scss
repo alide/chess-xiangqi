@@ -1,0 +1,37 @@
+@import './Global.css.scss';
+
+$red: red;
+$redText: darken($red, 10%);
+
+g.chess-piece {
+  fill: #DAC298;
+  font-size: 20px;
+
+  &.red {
+    stroke: $red;
+    text {
+      stroke: $redText;
+    }
+  }
+  &.black {
+    stroke: black;
+    text {
+      stroke: black;
+    }
+  }
+
+  circle.piece-block {
+    fill-opacity: 1;
+  }
+  circle.piece-outline {
+    fill-opacity: 0;
+  }
+
+  text {
+    @include user-cant-select();
+    @extend .kaiti;
+    color: #dd4444;
+    font-size: 21px;
+  }
+}
+

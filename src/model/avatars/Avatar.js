@@ -1,7 +1,8 @@
 class Avatar {
-  constructor ({name, faction, point}) {
+  constructor ({name, faction, point, player} = {}) {
     this.faction = faction;
     this.point = point;
+    this.player = player;
   }
 
   get location() {
@@ -10,6 +11,7 @@ class Avatar {
       cy: this.point.spacing * this.point.yPoint
     }
   }
+
 }
 
-export default Avatar
+export default Avatar;

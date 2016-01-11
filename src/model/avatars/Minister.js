@@ -1,4 +1,4 @@
-import Avatar from './avatar'
+import Avatar from './Avatar'
 
 export default class Minister extends Avatar {
   constructor (params) {

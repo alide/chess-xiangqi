@@ -1,20 +1,6 @@
+import Point from './Point'
 import toolbox from './toolbox'
-import _ from 'lodash'
-
-import generateAllPieces from './avatars/generateAllPieces'
-
-class Point {
-  constructor (xPoint, yPoint, spacing) {
-    this.xPoint = xPoint;
-    this.yPoint = yPoint;
-    this.spacing = spacing;
-
-    // States:
-    // highlight
-    this.state = 'normal'
-  }
-}
-
+import River from './prosthetics/River'
 
 class Grid {
   get STARTING_LINE_UP() {
@@ -22,16 +8,20 @@ class Grid {
     ];
   }
 
-  constructor({x: xCount,y: yCount, spacing} = props) { //9, 8, 50
+  constructor({x: xCount,y: yCount, spacing, boardPadding} = props) { //9, 8, 50
     this.xCount = xCount;
     this.yCount = yCount;
     this.spacing = spacing;
+    this.boardPadding = boardPadding;
 
     this.xGrids = toolbox.stretch(xCount);
     this.yGrids = toolbox.stretch(yCount);
 
     this.points = [];
     this.generatePoints();
+
+    this.buildBoard();
+
 
     this.verticalLines = this.xGrids.map((x)=> {
       return {
@@ -53,11 +43,6 @@ class Grid {
       }
     })
 
-    this.river = {
-      width: this.spacing * (this.xCount-1),
-      height: this.spacing,
-    }
-
     this.riverContent = {
       transform: `translate(0, ${this.spacing * 4})`
     }
@@ -74,8 +59,15 @@ class Grid {
       {x1: 5 * this.spacing, y1: 7 * this.spacing, x2: 4 * this.spacing, y2: 8 * this.spacing}
     ]
 
-    this.chesspieces = generateAllPieces.call(this);
+  }
 
+  buildBoard() {
+    this.river = new River({
+      boardPadding: this.boardPadding,
+      riverPadding: this.spacing * 4,
+      width: this.spacing * (this.xCount-1),
+      height: this.spacing
+    });
   }
 
   generatePoints() {
@@ -91,13 +83,17 @@ class Grid {
     return xInRange && xInRange[y];
   }
 
-  // findPoints({x,y}) {
-  //   this.points.filter((xArray, xCoord)=> {
-  //     return xArray.find((point, yCoord)=> {
-  //       return xCoord === x && yCoord === y
-  //     })
-  //   })
-  // }
+  /**
+    This is no longer being used
+   */
+  findPoints({x,y}) {
+    this.points.filter((xArray, xCoord)=> {
+      return xArray.find((point, yCoord)=> {
+        return xCoord === x && yCoord === y
+      })
+    })
+  }
+
 }
 
 export default Grid

@@ -2,26 +2,30 @@ import React from 'react';
 import d3 from 'd3'; // eslint-disable-line
 
 import toolbox from '../model/toolbox'
-import Grid from '../model/grid'
 import ChessPiece from './ChessPiece'
+
+import ChessGame from '../model/ChessGame'
 
 class Chessboard extends React.Component {
 
   constructor(props) {
     super(props);
+    var game = new ChessGame({
+      boardPadding: 50,
+    });
+
     this.state = {
       dimension: 800,
       boardPadding: 50,
-      grid: new Grid({
-        x:       9,
-        y:       10,
-        spacing: 50
-      })
-    }
+      game: game,
+      grid: game.grid
+    };
   }
 
   render() {
     window.parent.chess = this;
+    var game = this.state.game;
+
     var translatedBoardPadding = `translate(${this.state.boardPadding}, ${this.state.boardPadding})`
 
     var grid = [
@@ -80,21 +84,22 @@ class Chessboard extends React.Component {
     var chesspieces = (
       <g className="chesspieces" key="chesspieces" transform={translatedBoardPadding}>
         {
-          this.state.grid.chesspieces.map(function (chesspiece) {
-            return <ChessPiece transform={translatedBoardPadding} 
-              key={`chesspiece-${chesspiece.name}-横${chesspiece.location.cx}-竖${chesspiece.location.cy}`} 
+          game.chesspieces.map(function (chesspiece) {
+            return <ChessPiece transform={translatedBoardPadding}
+              key={`chesspiece-${chesspiece.name}-横${chesspiece.location.cx}-竖${chesspiece.location.cy}`}
               {...chesspiece}
               location={chesspiece.location}
+              player={chesspiece.player}
+              chesspiece={chesspiece}
             />
           })
         }
       </g>
     )
-
     return (
       <svg className="chessboard" height={this.state.dimension} width={this.state.dimension}>
         {grid}
-        {river}
+        {this.state.game.grid.river.render()}
         {chesspieces}
       </svg>
     );

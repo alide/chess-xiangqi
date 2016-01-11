@@ -5,16 +5,17 @@ module.exports = function(config) {
     basePath: '',
     browsers: [ 'PhantomJS' ],
     files: [
+      'test/customMatchers.js',
       'test/loadtests.js'
     ],
     port: 8080,
     captureTimeout: 60000,
-    frameworks: [ 'phantomjs-shim', 'mocha', 'chai' ],
+    frameworks: [ 'phantomjs-shim', 'jasmine', 'chai' ],
     client: {
-      mocha: {}
+      jasmine: {}
     },
     singleRun: true,
-    reporters: [ 'mocha', 'coverage' ],
+    reporters: [ 'progress', 'coverage' ],
     preprocessors: {
       'test/loadtests.js': [ 'webpack', 'sourcemap' ]
     },

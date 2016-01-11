@@ -1,4 +1,4 @@
-import Avatar from './avatar'
+import Avatar from './Avatar'
 
 export default class Pawn extends Avatar {
   constructor (params) {

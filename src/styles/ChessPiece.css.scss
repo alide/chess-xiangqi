@@ -2,6 +2,10 @@
 
 $red: red;
 $redText: darken($red, 10%);
+$redHightlight: #dd3333;
+
+$black: black;
+$blackHightlight: #555;
 
 g.chess-piece {
   fill: #DAC298;
@@ -12,19 +16,42 @@ g.chess-piece {
     text {
       stroke: $redText;
     }
+    &.selected {
+      stroke: $redHightlight;
+    }
   }
   &.black {
     stroke: black;
     text {
       stroke: black;
     }
+    &.selected {
+      stroke: $blackHightlight;
+    }
+  }
+  &.selected {
+    circle.piece-outline {
+      stroke-width: 3;
+    }
+    circle.piece-inline {
+      stroke-width: 3;
+    }
+    text {
+      font-weight: bolder;
+      color: $blackHightlight;
+    }
   }
 
   circle.piece-block {
     fill-opacity: 1;
+    stroke-width: 1;
+  }
+  circle.piece-inline {
+    fill-opacity: 0;
+    stroke-width: 2;
   }
   circle.piece-outline {
-    fill-opacity: 0;
+    stroke-width: 1;
   }
 
   text {

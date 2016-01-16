@@ -1,0 +1,16 @@
+@import './Global.css.scss';
+
+g.intersection {
+
+  fill-opacity: 0;
+  fill: $intersectionHighlight;
+
+  &.highlight {
+    cursor: -webkit-grab;
+    fill-opacity: 0.5;
+    &.highlight-red { fill: $redIntersectionHighlight; }
+    &.highlight-black { fill: blackIntersectionHighlight; }
+  }
+  &.highlight:hover { fill-opacity: 0.7; }
+  &.occupied { pointer-events: none; }
+}

@@ -1,15 +1,9 @@
 @import './Global.css.scss';
 
-$red: red;
-$redText: darken($red, 10%);
-$redHightlight: #dd3333;
-
-$black: black;
-$blackHightlight: #555;
-
 g.chess-piece {
   fill: #DAC298;
   font-size: 20px;
+  cursor: -webkit-grab;
 
   &.red {
     stroke: $red;
@@ -17,7 +11,8 @@ g.chess-piece {
       stroke: $redText;
     }
     &.selected {
-      stroke: $redHightlight;
+      text { stroke: $redHighlight; stroke-width: 2;}
+      stroke: $redHighlight;
     }
   }
   &.black {
@@ -26,7 +21,8 @@ g.chess-piece {
       stroke: black;
     }
     &.selected {
-      stroke: $blackHightlight;
+      text: {stroke: $blackHighlight; stroke-width: 2;}
+      stroke: $blackHighlight;
     }
   }
   &.selected {
@@ -35,10 +31,6 @@ g.chess-piece {
     }
     circle.piece-inline {
       stroke-width: 3;
-    }
-    text {
-      font-weight: bolder;
-      color: $blackHightlight;
     }
   }
 

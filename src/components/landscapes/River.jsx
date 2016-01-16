@@ -1,17 +1,23 @@
 import React from 'react';
 
+import config from '../../config/chessConfig';
+let {boardPadding, spacing} = config;
+
+
 export default class River extends React.Component{
-  constructor({boardPadding, riverPadding, width, height} = {}) {
+  constructor() {
     super();
+    
     this.boardPadding = boardPadding;
-    this.riverPadding = riverPadding;
-    this.width = width;
-    this.height = height;
+    this.riverPadding = spacing * 4;
+    this.width = spacing * 8;
+    this.height = spacing;
   }
 
   render() {
     let boardTranslation = `translate(${this.boardPadding}, ${this.boardPadding})`;
     let riverTranslation = `translate(0, ${this.riverPadding})`;
+
     return (
       <g className="river" key="river" stroke="#dd4444" fill="#eee" strokeWidth="1"
         transform={boardTranslation}

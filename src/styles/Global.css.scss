@@ -8,3 +8,15 @@
 .kaiti {
   font-family: KaiTi, FangSong, SimHei, SimSun;
 }
+
+$red: red;
+$redText: darken($red, 10%);
+$redHighlight: brown;
+$redIntersectionHighlight: lighten($red, 20%);
+
+$black: black;
+$blackHighlight: #555;
+$blackIntersectionHighlight: lighten($black, 20%);
+
+$intersectionHighlight: rgb(200, 150, 100);
+

@@ -1,10 +1,10 @@
-import Chariot from '../avatars/Chariot'
-import Knight from '../avatars/Knight'
-import Minister from '../avatars/Minister'
-import Guard from '../avatars/Guard'
-import General from '../avatars/General'
-import Cannon from '../avatars/Cannon'
-import Pawn from '../avatars/Pawn'
+import Chariot from './avatars/Chariot'
+import Knight from './avatars/Knight'
+import Minister from './avatars/Minister'
+import Guard from './avatars/Guard'
+import General from './avatars/General'
+import Cannon from './avatars/Cannon'
+import Pawn from './avatars/Pawn'
 
 
 function generatePieces(player) {
@@ -13,9 +13,9 @@ function generatePieces(player) {
 
   if (faction === 'red') {
     var redPieces = [
-      new Chariot({coordinate: coordinates[0][0]}),
-      new Chariot({coordinate: coordinates[8][0]}),
-      // new Chariot({coordinate: coordinates[1][5]}), // for testing remove
+      new Chariot({coordinate: coordinates[0][0]}), 
+      new Chariot({coordinate: coordinates[8][0]}), // uncomment
+      // new Chariot({coordinate: coordinates[7][5]}), // for testing remove
 
       new Knight({coordinate: coordinates[1][0]}),
       new Knight({coordinate: coordinates[7][0]}),

@@ -1,21 +1,21 @@
-## built game board / map
+## A basic chess game with the most basic gameflow
 
-## built pieces
+## Upcoming work
+----------------
 
+### Building up a/many widget that can display
 
-# TODO:
-## build game state
-  - turns
-
-## build player state
-
-##
+- game timer
+- whose turn it is
+- graveyard
 
 
+### New game option
 
 
-# Optional:
+### Simple AI
 
-## build grave yard
 
-## build counters
+
+
+

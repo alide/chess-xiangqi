@@ -1,3 +1,5 @@
+import _ from 'lodash'
+
 var iframe = document.createElement('iframe');
 iframe.style.display='none';
 document.body.appendChild(iframe);
@@ -17,10 +19,18 @@ Object.assign(Array2.prototype, {
     });
   },
   coord: function (x, y) {
-    return this[x][y];
+    try {
+      return this[x][y];
+    }
+    catch(e) {
+      return null;
+    }
   },
   all: function() {
     return _.flatten(this);
+  },
+  extinguish: function () {
+    return this.all().map(coord => coord.hidden());
   }
 })
 

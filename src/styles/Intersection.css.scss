@@ -5,12 +5,13 @@ g.intersection {
   fill-opacity: 0;
   fill: $intersectionHighlight;
 
-  &.highlight {
+  &.highlighted {
     cursor: -webkit-grab;
     fill-opacity: 0.5;
-    &.highlight-red { fill: $redIntersectionHighlight; }
-    &.highlight-black { fill: blackIntersectionHighlight; }
+    &.Coordinate_STATE__redHighlighted { fill: $redIntersectionHighlight; }
+    &.Coordinate_STATE__blackHighlighted { fill: $blackIntersectionHighlight; }
   }
-  &.highlight:hover { fill-opacity: 0.7; }
+
+  &.highlighted:hover { fill-opacity: 0.7; }
   &.occupied { pointer-events: none; }
 }

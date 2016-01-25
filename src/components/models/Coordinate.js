@@ -1,5 +1,6 @@
-import _ from 'lodash';
 import config from '../../config/chessConfig'
+import tools from '../toolbox/tools'
+
 var {spacing} = config;
 
 class Coordinate {
@@ -7,11 +8,6 @@ class Coordinate {
     this.xPoint = xPoint;
     this.yPoint = yPoint;
     this.avatar = null;
-
-    this.view = null;
-    this.highlightFaction = '';
-
-    this.state = Coordinate.NORMAL;
   }
 
   get location() {
@@ -19,6 +15,10 @@ class Coordinate {
       cx: spacing * this.xPoint,
       cy: spacing * this.yPoint
     }
+  }
+
+  get xy() {
+    return {x: this.xPoint, y: this.yPoint }
   }
 
   set setAvatar(avatar) {
@@ -29,23 +29,12 @@ class Coordinate {
     return `Coord x: ${this.xPoint}, y: ${this.yPoint}`;
   }
 
-  highlight(highlightFaction) {
-    this.state = Coordinate.HIGHLIGHT;
-    this.highlightFaction = highlightFaction;
+  isHighlighted () {
+    return !this.isHidden();
   }
 
-  isHighlighted() {
-    return this.state === Coordinate.HIGHLIGHT;
-  }
-  
-  hide() {
-    this.state = Coordinate.NORMAL;
-  }
 }
 
-_.extend(Coordinate, {
-  NORMAL:          'COORD__NORMAL',
-  HIGHLIGHT:       'COORD__HIGHLIGHT',
-})
+tools.defineState(Coordinate, ['hidden', 'redHighlighted', 'blackHighlighted'])
 
 export default Coordinate;

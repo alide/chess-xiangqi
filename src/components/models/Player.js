@@ -1,15 +1,24 @@
 import matrix from './coordinateMatrix';
 
 export default class Player {
-  constructor({faction} = {}) {
+  constructor({faction, opponent} = {}) {
     this.faction = faction;
     this.avatars = [];
     this.selectedAvatar = null;
+
+    this.setOpponent = opponent;
   }
 
   set addAvatar(avatar) {
     this.avatars.push(avatar);
     avatar.player = this;
+  }
+
+  set setOpponent(opponent) {
+    if (opponent) {
+      this.opponent = opponent;
+      opponent.opponent = this;
+    }
   }
 
   set addAvatars(allPieces) {
@@ -19,7 +28,9 @@ export default class Player {
   }
 
   set setSelectedAvatar(avatar) {
-    matrix.all().map(coord =>  coord.hide());
+    matrix.extinguish();
+    this.opponent.avatars.filter(avatar=>avatar.isHaloed()).map(avatar => avatar.active());
+
     if (avatar === null) {
       this.selectedAvatar = avatar;
     }
@@ -30,8 +41,12 @@ export default class Player {
       this.selectedAvatar = avatar;
       
       this.selectedAvatar.getMoveOptions.map((coord) => {
-        coord.highlight(this.player);
+        coord[`${this.faction}Highlighted`]();
       });
+
+      this.selectedAvatar.getKillOptions.map((coord) => {
+        coord.avatar.haloed();
+      })
     }
   }
 

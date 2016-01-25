@@ -69,11 +69,107 @@ describe('.every', function () {
 })
 
 let {acceptUntil} = tools;
-
 describe('.acceptUntil', function () {
   var arr = tools.expand(8);
   
   it('should have values 0 to 4', function () {
     expect(acceptUntil(arr, val => val > 4)).toEqual([0,1,2,3,4])
+  })
+});
+
+
+let {defineState} = tools;
+describe('.defineState', function () {
+  beforeEach(function () {
+    this.spy = jasmine.createSpy();
+    
+    this.Robot = class Robot {
+      constructor() {
+        this.weight = '2 kilotons';
+      }
+    }
+    this.robot = new this.Robot;
+
+    defineState(this.Robot, ['broken', 'fixed', 'inTransit'], this.spy);
+  })
+
+  it('expect robot.state to be first of states passed in', function () {
+    expect(this.robot.isBroken()).toBe(true);
+  })
+
+  it('expect setter methods to work', function () {
+    this.robot.fixed()
+    expect(this.robot.isFixed()).toBe(true);
+  })
+
+  it('expect setter methods to kick in spy', function () {
+    this.robot.inTransit();
+    expect(this.spy).toHaveBeenCalledWith('inTransit');
+    expect(this.spy.calls.all()).toEqual([{
+      object: this.robot,
+      args: ['inTransit'],
+      returnValue: undefined, // this is needed
+    }])
+  })
+
+  describe('with inheritance', function () {
+    beforeEach(function () {
+      class Spudnik extends this.Robot {}
+      this.spudnik = new Spudnik;
+    })
+
+    it('should propagate to children', function () {
+      expect(this.spudnik.isBroken()).toBe(true)
+    })
+
+    it('expect setter methods to kick in spy', function () {
+      this.spudnik.fixed();
+      expect(this.spy).toHaveBeenCalledWith('fixed');
+      expect(this.spy.calls.all()).toEqual([{
+        object: this.spudnik,
+        args: ['fixed'],
+        returnValue: undefined, // this is needed
+      }])
+    })
+
+    it('can optionally send a callback in setter', function () {
+      var callback = jasmine.createSpy();
+      this.spudnik.broken(callback);
+      expect(this.spudnik.isBroken()).toBe(true);
+      expect(callback).toHaveBeenCalledWith('broken')
+    })
+  })
+})
+
+
+let {cx} = tools;
+describe('.cx', function () {
+  var car = {
+    usage: ['travel', 'pickup'],
+    getUsage: function () {
+      return this.usage;
+    }
+  }
+
+  it('should get class name values if defined', function () {
+    expect(cx({
+      header: car.getUsage().indexOf('travel') !== -1,
+      bordered: true
+    })).toBe('header bordered')
+
+    car.usage = ['work'];
+    expect(cx({
+      header: car.getUsage().indexOf('travel') !== -1,
+      bordered: true
+    })).toBe('bordered');
+  })
+
+  it('should allow dynamic key as of es2015 and babel', function () {
+    let str = 'blah-everywhere'
+    expect(cx({
+      [`hi-${str}`]: true,
+      [`howru-${str}`]: true,
+      [`bye-${str}`]: false
+    })).toBe('hi-blah-everywhere howru-blah-everywhere')
   })
 })

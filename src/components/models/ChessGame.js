@@ -3,7 +3,7 @@ import Grid from '../landscapes/Grid';
 import Coordinate from './Coordinate';
 
 import moment from 'moment';
-import generatePieces from '../toolbox/generatePieces';
+import generatePieces from './generatePieces';
 import coordinateMatrix from './coordinateMatrix';
 
 window.Coordinate = Coordinate;
@@ -21,7 +21,7 @@ export default class ChessGame{
     this.grid = new Grid;
 
     this.player1 = new Player({faction: 'red'});
-    this.player2 = new Player({faction: 'black'});
+    this.player2 = new Player({faction: 'black', opponent: this.player1});
     this.activePlayer = this.player1;
 
     this.coordinates = coordinateMatrix;
@@ -44,24 +44,41 @@ export default class ChessGame{
   }
 
   // Game Progression methods
-  selectAvatar(player, avatar) {
-    if (!player && !avatar) {
-      throw new Error(`#selectChessavatar expect both player and avatar to exist, ${player}, ${avatar}`);
+  selectAvatar(avatar) {
+    let {player} = avatar;
+
+    if(this.activePlayer === avatar.player) {
+      player.setSelectedAvatar = avatar;
+    } 
+    else if (avatar.isHaloed()) {
+      this.issueKill(this.activePlayer.selectedAvatar, avatar);
     }
-    else if (avatar.player !== player) {
-      throw new Error('avatar does not belong to player');
+    else {
+      throw new Error('Cannot kill a unit outside of kill options');
     }
-    else if (this.activePlayer !== player) {
-      throw new Error(`not your turn yet, ${player.faction}`)
-    }
-    player.setSelectedAvatar = avatar;
   } 
 
+  issueKill(avatar1, avatar2) {
+    avatar1.kill(avatar2);
+    this.activePlayer.setSelectedAvatar = null;
+    this.endGameCondition();
+    this.switchTurn();
+  }
+
   selectMove(coord) {
-    if (!coord.isHighlighted()) {
-      throw new Error('coord not highlighted'); 
+    if (coord.isHidden()) {
+      throw new Error('coord is not highlighted, unable to move'); 
     }
     this.activePlayer.getSelectedAvatar.moveTo(coord);  
     this.switchTurn();
+  }
+
+  endGameCondition() {
+    if (this.player1.general.isDeceased()) {
+      alert('player 2 wins');
+    }
+    else if (this.player2.general.isDeceased()) {
+      alert('player 1 wins');
+    }
   }
 }

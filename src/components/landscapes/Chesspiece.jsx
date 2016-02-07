@@ -17,7 +17,6 @@ class ChessPiece extends React.Component {
       haloed: this.props.avatar.isHaloed()
     })
 
-
     return !this.props.avatar.isDeceased() && (
       <g className={classNames}
         onClick={this.props.selectChesspiece}
@@ -41,12 +40,28 @@ class ChessPiece extends React.Component {
           r="15"
         />
 
-        <text x={this.props.avatar.location.cx-10} y={this.props.avatar.location.cy+7} >{this.props.name}</text>
+        {     !window.chessgame.config.svgAvatar &&
+          <text x={this.props.avatar.location.cx-10} y={this.props.avatar.location.cy+7}>
+            {this.props.avatar.getName}
+          </text>
+        }
+
+        {     window.chessgame.config.svgAvatar &&
+          <image 
+            x={this.props.avatar.location.cx-15}
+            y={this.props.avatar.location.cy-15}
+            width="30"
+            height="30"
+            xlinkHref={this.props.avatar.getPictograph} >
+          </image>
+        }
+
 
         <circle className="piece-halo"
           r='22'
           cy={this.props.avatar.location.cy}
           cx={this.props.avatar.location.cx}
+          fill={this.props.avatar.player.opponent.faction}
         />
       </g>
     );

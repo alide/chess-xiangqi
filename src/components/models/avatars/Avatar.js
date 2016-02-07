@@ -1,6 +1,8 @@
 import config from '../../../config/chessConfig'
 import matrix from 'components/models/coordinateMatrix'
 import tools from 'components/toolbox/tools';
+import avatarsInfo from './avatarsInfo'
+
 
 var {spacing} = config;
 
@@ -15,6 +17,15 @@ class Avatar {
 
     this.moveset = null; // only one moveset for each piece in Chess
     this.killMoveset = null; // only one killMoveset for each piece
+    this.name = this.constructor.name;
+  }
+
+  get getName() {
+    return avatarsInfo[this.faction][this.name]
+  }
+
+  get getPictograph() {
+    return avatarsInfo.pictographs[this.faction][this.name]
   }
 
   unselect() {

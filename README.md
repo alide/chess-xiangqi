@@ -1,21 +1,22 @@
-## A basic chess game with the most basic gameflow
+## A Xiangqi-Chess game
 
 ## Upcoming work
 ----------------
 
-### Building up a/many widget that can display
+### Building up many widget that can display
 
-- game timer
-- whose turn it is
-- graveyard
+- [x] game timer
+- [x] display of the current player
+- [ ] graveyard
 
+### Game Options
+- [x] Reset
+- [ ] Undo
 
-### New game option
-
+### History
+- [ ] history of moves
+- [ ] clickable to link to the move
 
 ### Simple AI
-
-
-
-
-
+- [ ] Produce optimally decided options based on value of position and pieces
+  e.g. Chariot = 5, Cannon = 4, Knight = 3, etc.

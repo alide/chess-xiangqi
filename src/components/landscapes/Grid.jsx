@@ -94,7 +94,8 @@ class Grid extends Component{
         transform={this.translatedBoardPadding} >
         {
           this.campLines.map(function (lineAttr, index) {
-            return <line {...lineAttr} key={`campLine${index}`}/>
+            return <line {...lineAttr} key={`campLine${index}`} strokeDasharray="2, 4"/>
+
           })
         }
       </g>

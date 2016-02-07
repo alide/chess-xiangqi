@@ -37,6 +37,7 @@
     "eslint-plugin-react": "^3.3.0",
     "file-loader": "^0.8.4",
     "glob": "^6.0.0",
+    "image-webpack-loader": "^1.6.3",
     "isparta-instrumenter-loader": "^1.0.0",
     "jasmine": "^2.4.1",
     "karma": "^0.13.19",
@@ -63,10 +64,10 @@
     "webpack-dev-server": "^1.12.0"
   },
   "dependencies": {
+    "bootstrap-css-only": "^3.3.6",
     "core-js": "^1.2.6",
     "d3": "^3.5.11",
     "jasmine": "^2.4.1",
-    "karma-es5-shim": "0.0.4",
     "karma-es6-shim": "^0.2.3",
     "karma-jasmine": "^0.3.6",
     "lodash": "^3.10.1",
@@ -76,6 +77,7 @@
     "react": "^0.14.0",
     "react-addons-test-utils": "^0.14.0",
     "react-dom": "^0.14.0",
-    "sass-loader": "^3.1.2"
+    "sass-loader": "^3.1.2",
+    "surgeonkit": "0.0.3"
   }
 }

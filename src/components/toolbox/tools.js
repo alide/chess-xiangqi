@@ -92,6 +92,10 @@ var tools = {
       }
     }
     return returnClassName.join(' ');
+  },
+
+  zeroPad: function (timeNumber) {
+    return ('0'+timeNumber).slice(-2)
   }
 
 };

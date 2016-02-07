@@ -7,7 +7,7 @@ export default class March extends Moveset {
     super(avatar) 
   }
 
-  get getMoveOptions() {
+  get getPotentialOptions() {
     this.x = this.avatar.coordinate.xPoint;
     this.y = this.avatar.coordinate.yPoint;
 
@@ -27,8 +27,12 @@ export default class March extends Moveset {
     return [marchOption];
   }
 
+  get getMoveOptions() {
+    return this.getPotentialOptions.filter(coord => !coord.avatar);
+  }
+
   get getKillOptions() {
-    return this.getMoveOptions.filter((coord)=> {
+    return this.getPotentialOptions.filter((coord)=> {
       return !!coord && coord.avatar && coord.avatar.player !== this.avatar.player;
     });
   }

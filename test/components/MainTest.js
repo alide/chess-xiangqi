@@ -11,13 +11,13 @@ import createComponent from 'helpers/shallowRenderHelper';
 import Main from 'components/main';
 
 describe('MainComponent', () => {
-    let MainComponent;
+  let MainComponent;
 
-    beforeEach(() => {
-      MainComponent = createComponent(Main);
-    });
+  beforeEach(() => {
+    MainComponent = createComponent(Main);
+  });
 
-    it('1 + 1 should be troo', () => {
-      expect(1+1).toEqual(2);
-    });
+  it('1 + 1 should be troo', () => {
+    expect(1+1).toEqual(2);
+  });
 });

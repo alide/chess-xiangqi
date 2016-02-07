@@ -4,7 +4,6 @@ import March from '../movesets/March'
 export default class Pawn extends Avatar {
   constructor (params) {
     super(params)
-    this.name = '卒'
     this.moveset = new March(this);
     this.killMoveset = new March(this);
   }

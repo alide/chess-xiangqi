@@ -19,7 +19,7 @@ export default class River extends React.Component{
     let riverTranslation = `translate(0, ${this.riverPadding})`;
 
     return (
-      <g className="river" key="river" stroke="#dd4444" fill="#eee" strokeWidth="1"
+      <g className="river" key="river" stroke="#dd4444" fill="#fff" strokeWidth="1"
         transform={boardTranslation}
       >
         <g className="riverContent" transform={riverTranslation}>

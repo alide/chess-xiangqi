@@ -70,9 +70,18 @@ module.exports = {
         loader: 'style-loader!css-loader!stylus-loader'
       },
       {
-        test: /\.(png|jpg|gif|woff|woff2)$/,
+        test: /\.(png|jpg|gif|woff|woff2|svg)$/,
         loader: 'url-loader?limit=8192'
-      }
+      },
+      // this was needed to load svg, turns out that wasnt it.
+      // {
+      //   test: /\.(jpe?g|png|gif|svg)$/i,
+      //   loaders: [
+      //     'file?hash=sha512&digest=hex&name=[hash].[ext]',
+      //     'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+      //   ]
+      
+      // }
     ]
   }
 };

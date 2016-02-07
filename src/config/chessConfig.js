@@ -1,7 +1,8 @@
 import tools from '../components/toolbox/tools';
 
 let config = {
-  dimension: 800, // height and width of viewing box
+  fieldWidth: 500, // height and width of viewing box
+  fieldHeight: 600,
   boardPadding: 50, // shift of all pieces
   spacing: 50, // space between grid points
 }

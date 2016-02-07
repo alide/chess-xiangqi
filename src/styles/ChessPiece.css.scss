@@ -6,7 +6,6 @@ g.chess-piece {
   cursor: -webkit-grab;
 
   &.red {
-    stroke: $red;
     text {
       stroke: $redText;
     }
@@ -14,11 +13,13 @@ g.chess-piece {
       text { stroke: $redHighlight; stroke-width: 2;}
       stroke: $redHighlight;
     }
+    stroke: $red;
   }
   &.black {
-    stroke: black;
+    fill: $black;
+    stroke: white;
     text {
-      stroke: black;
+      stroke: $blackText;
     }
     &.selected {
       text: {stroke: $blackHighlight; stroke-width: 2;}
@@ -37,7 +38,7 @@ g.chess-piece {
   &.haloed{
     &:hover { opacity: 0.7; }
     circle.piece-halo {
-      opacity: 0.5;
+      opacity: 0.3;
       display: block;
     }
   }

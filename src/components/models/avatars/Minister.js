@@ -4,7 +4,6 @@ import FieldFormation from '../movesets/FieldFormation'
 export default class Minister extends Avatar {
   constructor (params) {
     super(params)
-    this.name = '相'
     this.moveset = new FieldFormation(this);
     this.killMoveset = new FieldFormation(this);
   }

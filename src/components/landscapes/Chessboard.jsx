@@ -2,32 +2,31 @@ import React from 'react';
 
 import ChessPiece from './Chesspiece'
 import River from './River'
+import Frontlines from './Frontlines'
 import Intersection from './Intersection'
 
-import ChessGame from '../models/ChessGame'
 import config from '../../config/chessConfig'
 
-var {dimension, boardPadding} = config; 
+var {fieldHeight, fieldWidth, boardPadding} = config; 
 
 
 class Chessboard extends React.Component {
 
-  constructor() {
+  constructor({chessgame}) {
     super();
-    this.chessgame = window.chessgame = new ChessGame;
     window.chessboard = this;
-    this.state = {
-      game: this.chessgame
-    };
-
+    this.chessgame = chessgame;
     this.translatedBoardPadding = `translate(${boardPadding}, ${boardPadding})`
   }
 
   render() {
     return (
-      <svg className="chessboard" height={dimension} width={dimension} tabIndex='10' onBlur={this.onBlur.bind(this)}>
+      <svg className="chessboard" height={fieldHeight} width={fieldWidth} tabIndex='10' onBlur={this.onBlur.bind(this)}
+      >
         {this.chessgame.grid.render()}
         <River />
+        <Frontlines />
+
         {this.renderChesspieces()}
         {this.renderIntersections()}
       </svg>
@@ -36,7 +35,8 @@ class Chessboard extends React.Component {
 
   renderChesspieces() {
     return (
-      <g className="chesspieces" key="chesspieces" transform={this.translatedBoardPadding}>
+      <g className="chesspieces" key="chesspieces" transform={this.translatedBoardPadding}
+      >
         {this.chessgame.getAvatars.map((avatar, index)=> {
           return <ChessPiece transform={this.translatedBoardPadding}
             key={`avatar-${index}-${avatar.name}-横${avatar.location.cx}-竖${avatar.location.cy}`}
@@ -51,7 +51,8 @@ class Chessboard extends React.Component {
 
   renderIntersections() {
     return (
-      <g className="intersections" key="intersections" transform={this.translatedBoardPadding} >
+      <g className="intersections" key="intersections" transform={this.translatedBoardPadding} 
+      >
         {this.chessgame.coordinates.map((xSetVertical)=> {
           return xSetVertical.map((coord)=> {
             return <Intersection coord={coord} 

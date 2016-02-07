@@ -10,4 +10,6 @@ testsContext.keys().forEach(testsContext);
 // Global variables, setups
 import ChessGame from '../src/components/models/ChessGame.js';
 
+import moment from 'moment';
 window.game = new ChessGame
+window.moment = moment;

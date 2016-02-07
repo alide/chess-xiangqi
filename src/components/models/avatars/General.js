@@ -4,7 +4,6 @@ import Proximity from '../movesets/Proximity'
 export default class General extends Avatar {
   constructor (params) {
     super(params)
-    this.name = '将'
     params.player.general = this;
     this.moveset = new Proximity(this);
     this.killMoveset = new Proximity(this);

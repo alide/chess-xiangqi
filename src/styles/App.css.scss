@@ -35,3 +35,64 @@ text.kaiti, g.kaiti{
   color: #dd4444;
   font-size: 30px;
 }
+
+
+div.timer {
+  padding-bottom: 20px;
+  button{
+    border-radius: 20px;
+    pointer-events: none;
+    font-size: 26px;
+    padding: 0 20px;
+  }
+}
+
+g.frontlines {
+  pointer-events: none;
+  path {stroke: $red; }
+}
+
+
+.menu {
+  vertical-align: top;
+  padding: 20px 50px;
+  width: 300px;
+
+  .toggler {
+    .toggle_shape { margin: auto;}
+  }
+
+  .activePlayer p.output{
+    text-align: center;
+    background: navajowhite;
+  }
+
+  .menu-options {
+  }
+
+  p.lbl {
+    text-align: center;
+    width: 100%;
+    margin: 20px 0;
+    padding: 7px;
+    background: rgb(254,204,177); /* Old browsers */
+    color: black;
+  }
+
+  button{
+    width: 100%;
+    margin: 20px 0;
+    padding: 7px;
+    color: white;
+    letter-spacing: 2px;
+
+    &.clickable {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#feccb1+0,f17432+50,ea5507+51,fb955e+100;Red+Gloss+%232 */
+      background: rgb(254,204,177); /* Old browsers */
+      background: -moz-linear-gradient(top,  rgba(254,204,177,1) 0%, rgba(241,116,50,1) 50%, rgba(234,85,7,1) 51%, rgba(251,149,94,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top,  rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom,  rgba(254,204,177,1) 0%,rgba(241,116,50,1) 50%,rgba(234,85,7,1) 51%,rgba(251,149,94,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#feccb1', endColorstr='#fb955e',GradientType=0 ); /* IE6-9 */
+    }
+  }  
+}

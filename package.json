@@ -78,6 +78,6 @@
     "react-addons-test-utils": "^0.14.0",
     "react-dom": "^0.14.0",
     "sass-loader": "^3.1.2",
-    "surgeonkit": "0.0.3"
+    "surgeonkit": "0.0.5"
   }
 }

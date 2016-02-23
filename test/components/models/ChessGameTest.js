@@ -6,11 +6,12 @@
 import ChessGame from 'components/models/ChessGame';
 import Player from 'components/models/Player';
 import _ from 'lodash';
+import MainView from 'components/main'
 console.log()
-describe('MainComponent', () => {
+describe('ChessGame', () => {
   let game;
 
-  beforeEach(() => {game = new ChessGame; });
+  beforeEach(() => {game = new ChessGame(new MainView);});
 
   describe("game progression", function () {
     describe("#activePlayer", function () {

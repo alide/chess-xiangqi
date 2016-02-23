@@ -1,5 +1,5 @@
 import moment from 'moment';
-import tools from '../toolbox/tools'
+import tools from 'surgeonkit'
 
 export default class GameStat {
   constructor(props) {

@@ -1,4 +1,4 @@
-import tools from '../components/toolbox/tools';
+import tools from 'surgeonkit';
 
 let config = {
   fieldWidth: 500, // height and width of viewing box

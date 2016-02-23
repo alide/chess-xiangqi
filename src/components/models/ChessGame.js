@@ -76,15 +76,19 @@ export default class ChessGame{
   }
 
   endGameCondition() {
+    var isGameOverConfirmed = true;
     if (this.player1.general.isDeceased()) {
-      alert('player 2 wins');
+      isGameOverConfirmed = alert('player 2 wins');
     }
     else if (this.player2.general.isDeceased()) {
-      alert('player 1 wins');
+      isGameOverConfirmed = alert('player 1 wins');
+    }
+    if(!isGameOverConfirmed) {
+      this.reset();
     }
   }
 
-  reset (view) {
+  reset () {
     this.getAvatars.map((avatar) => {
       avatar.coordinate.avatar = null;
       avatar.coordinate = null;
@@ -94,7 +98,7 @@ export default class ChessGame{
     this.player2.avatars = [];
 
     this.start();
-    view.forceUpdate();
+    this.mainView.forceUpdate();
     this.stat.resetClock();
   }
 }

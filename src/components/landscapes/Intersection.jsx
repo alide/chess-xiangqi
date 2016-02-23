@@ -1,5 +1,5 @@
 import React from 'react';
-import tools from '../toolbox/tools'
+import tools from 'surgeonkit'
 
 
 require('styles/Intersection.css.scss');

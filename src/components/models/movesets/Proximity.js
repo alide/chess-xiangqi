@@ -1,6 +1,6 @@
 import Moveset from './Moveset';
 import matrix from 'components/models/coordinateMatrix';
-import tools from 'components/toolbox/tools';
+import tools from 'surgeonkit';
 import General from '../avatars/General'
 
 
@@ -23,7 +23,7 @@ export default class Proxmity extends Moveset {
       matrix.coord(this.x-1, this.y),
     ].filter(coord => {
       return !!coord && restriction.x.indexOf(coord.xPoint) !== -1 && restriction.y.indexOf(coord.yPoint) !== -1;
-    });
+    }).filter(this._filterFaceToFace.bind(this));
   }
 
   get getMoveOptions() {
@@ -65,4 +65,17 @@ export default class Proxmity extends Moveset {
       });
     }
   }
+
+  /* Prevents a Flying general from ever taking place*/
+  _filterFaceToFace(option) {
+    let col = matrix.col(option.x);
+    let dissection = tools.dissect(col, option.y, option.y + 1);
+    let topPieces = dissection[0].reverse();
+    let bottomPieces = dissection[2];
+
+    var candidates = this.avatar.belongsToTopFaction ? bottomPieces : topPieces; 
+    var nextPiece = candidates.find(coord => coord.avatar);
+    return !(nextPiece && (nextPiece.avatar instanceof General));
+  }
+
 }

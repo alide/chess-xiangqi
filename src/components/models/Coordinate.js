@@ -1,5 +1,5 @@
 import config from '../../config/chessConfig'
-import tools from '../toolbox/tools'
+import tools from 'surgeonkit'
 
 var {spacing} = config;
 
@@ -19,6 +19,14 @@ class Coordinate {
 
   get xy() {
     return {x: this.xPoint, y: this.yPoint }
+  }
+
+  get x() {
+    return this.xPoint;
+  }
+
+  get y() {
+    return this.yPoint;
   }
 
   set setAvatar(avatar) {

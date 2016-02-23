@@ -1,5 +1,5 @@
 import Straight from './Straight';
-import tools from 'components/toolbox/tools';
+import tools from 'surgeonkit';
 
 export default class Bombard extends Straight {
   constructor(avatar) {

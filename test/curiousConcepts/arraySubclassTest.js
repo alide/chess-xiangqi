@@ -1,12 +1,12 @@
 /*eslint-env node, jasmine */
 
-import Array2 from 'components/toolbox/Array2';
+import {CoordinateMatrix} from 'components/models/coordinateMatrix';
 
 describe("Array subclass", function () {
 
   beforeEach(function () {
 
-    this.stack = Array2();
+    this.stack = CoordinateMatrix();
     this.stack.push(1);
     this.stack.push(2);
     this.stack.push(3);
@@ -18,13 +18,13 @@ describe("Array subclass", function () {
   })
 
   it('is not window.Array', function () {
-    expect(Array2()).not.toBe(window.Array);
-    expect(this.stack.constructor).toBe(Array2);
+    expect(CoordinateMatrix()).not.toBe(window.Array);
+    expect(this.stack.constructor).toBe(CoordinateMatrix);
   })
 
   describe('2-dimensional array', function () {
     beforeEach(function() {
-      this.matrix = new Array2(
+      this.matrix = new CoordinateMatrix(
         [1  , 2  , 3]  , // -> going down  1 4 7 10
         [4  , 5  , 6]  , // v going right  2 5 8 11
         [7  , 8  , 9]  , //                3 6 9 12
@@ -34,8 +34,8 @@ describe("Array subclass", function () {
 
 
 
-    it('throws error if array is not a matrix', function () {
-      let ezArray = new Array2(1,2,3);
+    it('throws error if array is not a CoordinateMatrix', function () {
+      let ezArray = new CoordinateMatrix(1,2,3);
       expect(ezArray).toEqual([1,2,3]);
     })
 

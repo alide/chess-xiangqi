@@ -1,6 +1,6 @@
 import Moveset from './Moveset';
 import matrix from 'components/models/coordinateMatrix';
-import tools from 'components/toolbox/tools';
+import tools from 'surgeonkit';
 
 export default class Straight extends Moveset {
   constructor (avatar) {

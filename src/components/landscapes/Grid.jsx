@@ -1,4 +1,4 @@
-import toolbox from '../toolbox/tools'
+import tools from 'surgeonkit'
 import React, {Component} from 'react';
 
 import config from '../../config/chessConfig';
@@ -12,8 +12,8 @@ class Grid extends Component{
     this.horizontalCount = 9;
     this.verticalCount = 10;
 
-    this.horizontalGrids = toolbox.expand(this.horizontalCount);
-    this.verticalGrids = toolbox.expand(this.verticalCount);
+    this.horizontalGrids = tools.expand(this.horizontalCount);
+    this.verticalGrids = tools.expand(this.verticalCount);
 
     this.paintLines();
   }

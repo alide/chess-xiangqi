@@ -1,6 +1,6 @@
 import config from '../../../config/chessConfig'
 import matrix from 'components/models/coordinateMatrix'
-import tools from 'components/toolbox/tools';
+import tools from 'surgeonkit';
 import avatarsInfo from './avatarsInfo'
 
 

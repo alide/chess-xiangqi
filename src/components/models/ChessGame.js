@@ -17,10 +17,10 @@ export default class ChessGame{
 
     this.player1 = new Player({faction: 'red'});
     this.player2 = new Player({faction: 'black', opponent: this.player1});
-    
+
     this.coordinates = coordinateMatrix;
-    
-    this.config = {svgAvatars: false };
+
+    this.config = {svgAvatar: true };
 
     this.start();
   }
@@ -93,7 +93,7 @@ export default class ChessGame{
       avatar.coordinate.avatar = null;
       avatar.coordinate = null;
     });
-    
+
     this.player1.avatars = [];
     this.player2.avatars = [];
 

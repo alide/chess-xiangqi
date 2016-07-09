@@ -18,27 +18,31 @@ class AppComponent extends React.Component {
 
     return (
       <div>
-        <div className="inline">  
+        <div className="inline">
           <Chessboard chessgame = {this.chessgame} />
         </div>
-        <div className="inline menu"> 
+        <div className="inline menu">
           <Toggler className='inline'
             label="Graphic Avatars"
             model={this.chessgame.config}
-            attr={'svgAvatar'}
-            callback={this.forceUpdate.bind(this)}/>
+            attr='svgAvatar'
+            callback={this.forceUpdate.bind(this)}
+          />
 
-          <label className="activePlayer block">
-            <p className='lbl'>Turn of:</p>
-            <p className='output' style={{color: this.chessgame.activePlayer.faction}}>
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">Turn of:</h3>
+            </div>
+            <div className={`panel-body ${this.chessgame.activePlayer.faction === 'red' ? 'text-danger' : 'text-muted' }`}>
               {this.chessgame.activePlayer.faction === 'red' ? 'Player 1' : 'Player 2'}
-            </p>
-          </label>
+            </div>
+          </div>
 
           <Timer stat={this.chessgame.stat}/>
 
-          <div className="menu-options">
-            <button className="clickable" onClick={this.chessgame.reset.bind(this.chessgame, this)}>Reset</button>
+          <div>
+            <button className="btn btn-warning" onClick={this.chessgame.reset.bind(this.chessgame, this)}>Reset</button>
+          <button className="btn" onClick={()=> {}}>Undo</button>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ class Timer extends React.Component {
       timer: props.stat.getTimer
     }
   }
-  
+
   componentDidMount(){
     window.setInterval(function () {
       this.setState({timer: this.props.stat.getTimer})

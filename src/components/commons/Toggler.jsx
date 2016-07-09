@@ -13,15 +13,21 @@ class Toggler extends React.Component {
 
     return (
       <div className="toggler">
-        <label className="toggle block">
-          <p className='lbl'>{this.props.label}</p>
-          <input type="checkbox" 
-            value={value} 
-            onChange={this.handleChange.bind(this)}
-          />
-          <div className="toggle_shape"></div>
-        </label>
-      </div> 
+
+
+        <div className="panel panel-default">
+          <div className="panel-heading">{this.props.label}</div>
+          <div className="panel-body">
+            <label className="toggle block">
+              <input type="checkbox"
+                value={value}
+                onChange={this.handleChange.bind(this)}
+              />
+              <div className="toggle_shape"></div>
+            </label>
+          </div>
+        </div>
+      </div>
     )
   }
 

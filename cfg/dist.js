@@ -21,7 +21,7 @@ let config = _.merge({
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    // new webpack.optimize.UglifyJsPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin()
@@ -35,6 +35,14 @@ config.module.loaders.push({
     config.additionalPaths,
     [ path.join(__dirname, '/../src') ]
   )
+},
+{
+  test: /\.(eot|woff|ttf|ttc)$/, loader: "file"
+},
+{
+  test: /\.scss/,
+  loader: 'style!css!sass',
+  include: path.join(__dirname, 'src', 'styles')
 });
 
 module.exports = config;

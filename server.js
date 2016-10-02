@@ -6,11 +6,11 @@ var config = require('./webpack.config');
 var open = require('open');
 
 new WebpackDevServer(webpack(config), config.devServer)
-.listen(config.port, 'localhost', function(err) {
+.listen(process.env.PORT || config.port, function(err) {
   if (err) {
     console.log(err);
   }
   console.log('Listening at localhost:' + config.port);
   console.log('Opening your system browser...');
-  open('http://localhost:' + config.port + '/webpack-dev-server/'); // only used if not using regular npm run server.js
+  // open('http://localhost:' + config.port + '/webpack-dev-server/'); // only used if not using regular npm run server.js
 });
